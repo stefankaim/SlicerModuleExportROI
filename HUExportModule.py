@@ -189,6 +189,7 @@ class HUExportModuleWidget(ScriptedLoadableModuleWidget):
                 for row in sliceResults:
                     writer.writerow(row)
             
+            slicer.mrmlScene.RemoveNode(labelmapNode)
             exportCount += 1
 
         self.statusLabel.setText(f"Exported {exportCount} segment(s) to :\n{outputFolder}")
