@@ -157,7 +157,6 @@ class HUExportModuleWidget(ScriptedLoadableModuleWidget):
             
             safeVolumeName = self.cleanName(volumeNode.GetName())
             safeSegNodeName = self.cleanName(segNodeName)
-            safeSegmentName = self.cleanName(segmentName)
 
             locale.setlocale(locale.LC_ALL, '')
 
@@ -182,7 +181,7 @@ class HUExportModuleWidget(ScriptedLoadableModuleWidget):
                         "StdErr": fmt(np.std(huValues) / np.sqrt(huValues.size))
                     })
 
-            outputPath = os.path.join(outputFolder, f"{safeVolumeName}_{safeSegNodeName}_{safeSegmentName}_statistics.csv")
+            outputPath = os.path.join(outputFolder, f"{safeVolumeName}_{safeSegNodeName}_statistics.csv")
             with open(outputPath, mode='w', newline='', encoding='utf-8') as file:
                 writer = csv.DictWriter(file, fieldnames=["SliceIndex", "Z_Slice_mm", "Mean", "StdDev", "Min", "Max", "VoxelCount", "StdErr"], delimiter=csv_delimiter)
                 writer.writeheader()
